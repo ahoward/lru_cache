@@ -1,0 +1,10 @@
+NAME
+  lru_cache.rb
+
+SYNOPSIS
+  a simple but efficient implementation of a least recently used size limited
+  cache
+
+USAGE
+  lru = LRU.cache :max => 1024
+  value = lru.get('key'){ lookup(key) }
