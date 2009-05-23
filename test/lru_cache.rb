@@ -86,9 +86,12 @@ Testy.testing 'lru_cache' do
       result.check :size, :expect => 3, :actual => @lru.max
       @lru.get(0)
       @lru.put(3,3)
-      result.check :values, :expect => [0,2,3], :actual => @lru.values.sort
+      result.check :values_a, :expect => [0,2,3], :actual => @lru.values.sort
       @lru.put(4,4)
-      result.check :values, :expect => [0,3,4], :actual => @lru.values.sort
+      result.check :values_b, :expect => [0,3,4], :actual => @lru.values.sort
+      @lru.values.each{|value| @lru.get(value)}
+      @lru.put(5,5)
+      result.check :values_c, :expect => [3,4,5], :actual => @lru.values.sort
     end
 
   end
