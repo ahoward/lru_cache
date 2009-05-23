@@ -5,9 +5,7 @@ module LRU
   end
 
   class Cache
-    Mb = 2 * 20
-    Max = 1 * Mb
-    Record = Struct.new(:key, :value, :hits, :at)
+    Max = 2 ** 16
 
     attr_accessor :index
     attr_accessor :max
