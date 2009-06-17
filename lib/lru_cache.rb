@@ -8,6 +8,7 @@ module LRU
     Max = 2 ** 16
 
     attr_accessor :index
+    attr_accessor :linked_list
     attr_accessor :max
     attr_accessor :block
 
@@ -27,7 +28,7 @@ module LRU
         pair.last
       else
         block ||= @block
-        raise 'no block!' unless block
+        return nil unless block
         value = block.call(key)
         pair = [key, value]
         @linked_list.push(pair)
@@ -90,6 +91,7 @@ module LRU
     def to_a
       keys.zip(values)
     end
+
   end
 
   class LinkedList
